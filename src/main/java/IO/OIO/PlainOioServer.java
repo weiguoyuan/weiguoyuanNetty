@@ -8,6 +8,7 @@ import java.net.Socket;
 /**
  * Created by william on 2018/2/26.
  * 未使用Netty的阻塞IO
+ * 接收客户端连接 向客户端写"Hi" 然后关闭连接
  */
 public class PlainOioServer {
     public void serve(int port) throws IOException{
