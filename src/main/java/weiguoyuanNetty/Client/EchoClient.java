@@ -36,7 +36,7 @@ public class EchoClient {
                             ch.pipeline().addLast(new EchoClientHandler());//当连接创建时 一个EchoClientHandler实例会被安装到(该Channel的)ChannelPipeline中
                         }
                     });
-            ChannelFuture f = b.connect().sync();
+            ChannelFuture f = b.connect().sync();//connect()被调用后BootStrap将会创建一个新的Channel 连接到远程节点并返回一个ChannelFuture 其将会在连接操作完成后接收到通知
             f.channel().closeFuture().sync();
         }finally {
             group.shutdownGracefully().sync();

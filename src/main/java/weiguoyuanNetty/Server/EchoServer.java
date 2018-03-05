@@ -46,7 +46,7 @@ public class EchoServer {
                             channel.pipeline().addLast(serverHandler);
                         }
                     });
-            ChannelFuture future = bootstrap.bind().sync();//异步的绑定服务器 调用sync()方法阻塞当前Thread直到绑定成功
+            ChannelFuture future = bootstrap.bind().sync();//异步的绑定服务器 调用sync()方法阻塞当前Thread直到绑定成功 绑定ServerChannel并返回一个ChannelFuture 绑定完成后接到通知 在那之后必须调用Channel.connect()方法来建立连接
             future.channel().closeFuture().sync();//应用程序将会阻塞等待直到服务器的Channel关闭
         }finally {
             group.shutdownGracefully().sync();//关闭EventLoopGroup 释放所有资源 包括创建的线程
